@@ -22,6 +22,16 @@ public class PlayerControl : MonoBehaviour
 	// Variable indicates which weapon the player is currently carrying
 	public Weapons WeaponWeAreCarrying; 
 
+	// Call upon these 5 "hello world" print functions by referring to them by the function name SayHelloWorld()
+	void SayHelloWorld()
+	{
+		Debug.Log ("hello world");
+		Debug.Log ("hello world");
+		Debug.Log ("hello world");
+		Debug.Log ("hello world");
+		Debug.Log ("hello world");
+	}
+
 	// Update is called once per frame
 	void LateUpdate()
 	{
@@ -29,14 +39,17 @@ public class PlayerControl : MonoBehaviour
 		if (Input.GetKeyDown (KeyCode.Space)) {
 			// Perform check (ammo count) to ensure we have enough ammo to fire
 			if (Ammo > 0) { // When this condition is met...
-				while(Ammo > 0) // use while loop to release all of the ammo in one shot
 				{
 					Instantiate (AmmoPrefab); // allow player to fire weapon and
 					Ammo = Ammo - 1; // ammo is reduced
+
+					SayHelloWorld(); // Note: script enters SayHelloWorld() function & prints "hello world" 5 times
 				}
-			} else // Otherwise...
+			} 
+			else // Otherwise...
 			{
 				Debug.Log ("Out of ammo"); // print this message to the console
+				SayHelloWorld(); // Note: script enters SayHelloWorld() function & prints "hello world" 5 times
 			}
 		}
 	}
