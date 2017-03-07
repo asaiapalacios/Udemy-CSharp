@@ -29,9 +29,12 @@ public class PlayerControl : MonoBehaviour
 		if (Input.GetKeyDown (KeyCode.Space)) {
 			// Perform check (ammo count) to ensure we have enough ammo to fire
 			if (Ammo > 0) { // When this condition is met...
-				// Instantiate prefab
-				Instantiate (AmmoPrefab); // allow player to fire weapon and
-				Ammo = Ammo - 1; // ammo is reduced
+				for(int i=0; i<3; i++) // for loop will fire our weapon 3 times
+				{
+					// Instantiate prefab
+					Instantiate (AmmoPrefab); // allow player to fire weapon and
+					Ammo = Ammo - 1; // ammo is reduced
+				}
 			} else // Otherwise...
 			{
 				Debug.Log ("Out of ammo"); // print this message to the console
