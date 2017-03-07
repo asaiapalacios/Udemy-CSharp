@@ -33,7 +33,7 @@ public class PlayerControl : MonoBehaviour
 	}
 
 	// Update is called once per frame
-	void LateUpdate()
+	void LateUpdate() // Note: event function being called automatically by the Unity engine
 	{
 		// If fire pressed
 		if (Input.GetKeyDown (KeyCode.Space)) {
