@@ -3,54 +3,36 @@ using System.Collections;
 
 public class PlayerControl : MonoBehaviour
 {
-	// A list of weapons a player could find in the game
-	public enum Weapons {Pistol=0, Rifle=1, ChainGun=2, PlasmaCan=3};
-
 	// Prefab to instantiate
 	public GameObject AmmoPrefab;
 
-	public int Ammo = 10;
+	public int Ammo = 10; 
 
-	// Specify our constant once and have it apply to our weapon variables
-	public const int AMMO_COUNT = 15;
-
-	// Starting value for weapon variables
-	public int AmmoForPistol = AMMO_COUNT;
-	public int AmmoForRifle = AMMO_COUNT;
-	public int AmmoForChainGun = AMMO_COUNT; 
-
-	// Variable indicates which weapon the player is currently carrying
-	public Weapons WeaponWeAreCarrying; 
-
-	// Call upon these 5 "hello world" print functions by referring to them by the function name SayHelloWorld()
-	void SayHelloWorld()
+	// Function to fire weapon for us
+	string FireWeapon(int NumberofBullets)
 	{
-		Debug.Log ("hello world");
-		Debug.Log ("hello world");
-		Debug.Log ("hello world");
-		Debug.Log ("hello world");
-		Debug.Log ("hello world");
-	}
-
+		// If run out of ammo (if statement is true), exit function block of code + return string
+		if (Ammo <= 0) return "Fired Nothing"; // Note: return output matches the string return type
+	
+		// Otherwise (if statement is false) enter for loop and fire however many bullets we have specified for # of bullets
+		for(int i=0; i<NumberofBullets; i++) 
+		{ // When this condition is met...
+			// Note: instantiate prefab
+			Instantiate (AmmoPrefab); // allow player to fire weapon
+		}
+		Ammo = Ammo - NumberofBullets; // Calculate what new ammo count should be
+		return "Fired Weapon";
+	} 
+		
 	// Update is called once per frame
 	void LateUpdate() // Note: event function being called automatically by the Unity engine
 	{
 		// If fire pressed
-		if (Input.GetKeyDown (KeyCode.Space)) {
-			// Perform check (ammo count) to ensure we have enough ammo to fire
-			if (Ammo > 0) { // When this condition is met...
-				{
-					Instantiate (AmmoPrefab); // allow player to fire weapon and
-					Ammo = Ammo - 1; // ammo is reduced
-
-					SayHelloWorld(); // Note: script enters SayHelloWorld() function & prints "hello world" 5 times
-				}
-			} 
-			else // Otherwise...
-			{
-				Debug.Log ("Out of ammo"); // print this message to the console
-				SayHelloWorld(); // Note: script enters SayHelloWorld() function & prints "hello world" 5 times
-			}
+		if (Input.GetKeyDown (KeyCode.Space)) 
+		{
+			// Function call resolves to a string value (1 of 2 return strings) b/c it is the output of the function
+			Debug.Log(FireWeapon(1)); // Insert in argument how many bullets (an int) we want to fire (1 bullet at a time in this case)
+			// Print in the console log the return statement string the function call outputs 
 		}
 	}
 }
