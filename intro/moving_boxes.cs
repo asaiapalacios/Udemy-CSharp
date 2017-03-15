@@ -27,12 +27,12 @@ public class MovingBoxes : MonoBehaviour
 				// If it has not, then elevate box (by its speed) for the current frame 
 				Box.transform.Translate (TranslateSpeed.x * Time.deltaTime, TranslateSpeed.y * Time.deltaTime, TranslateSpeed.z * Time.deltaTime); // Raise the box on the y axis by its current speed
 				yield return null; // Return null statement waits until the next frame (rather than wait for a specified period of time like WaitForSeconds(2.0f)) 
-								// Summary: We finished execution in this function for this frame, but for the next frame...
-								// we come back to the return null statement to resume execution at the end of this line statement.
-								// What this does: Returns back to the start of the while loop & begins to raise the box even further and...
-								// it will continue waiting frame-by-frame until the box reaches its destination in height.
-								// At this point: it exits the foreach loop cycle, returns back to the same foreach cycle for the next box to enter (if it meets condition)
-								// Repeats that process for each and every box (4) so that each box rises in sequence
+						// Summary: We finished execution in this function for this frame, but for the next frame...
+						// we come back to the return null statement to resume execution at the end of this line statement.
+						// What this does: Returns back to the start of the while loop & begins to raise the box even further and...
+						// it will continue waiting frame-by-frame until the box reaches its destination in height.
+						// At this point: it exits the foreach loop cycle, returns back to the same foreach cycle for the next box to enter (if it meets condition)
+						// Repeats that process for each and every box (4) so that each box rises in sequence
 						}
 		}
 		yield return new WaitForSeconds (1.0f); // Waits for a further 1 second and...
@@ -44,9 +44,9 @@ public class MovingBoxes : MonoBehaviour
 	{
 		// The proper convention/syntax for calling our coroutine, an asynchronous-like property (it runs in parallel)
 		StartCoroutine ("MoveBoxes"); // StartCoroutine function call initiates the MoveBoxes coroutine (
-									  // Note: This is another function call version cited, this time, calling the function MoveBoxes as a string  
+								// Note: This is another function call version cited, this time, calling the function MoveBoxes as a string  
 		StopCoroutine("MoveBoxes"); // Note: StopCoroutine can only accept a string as an argument (the StartCoroutine("MoveBoxes") version)
-									// StopCoroutine terminates the MoveBoxes coroutine regardless of the state of the code (whether function completed or not) within MoveBoxes
+							    // StopCoroutine terminates the MoveBoxes coroutine regardless of the state of the code (whether function completed or not) within MoveBoxes
 	}
 
 	// Update is called once per frame
