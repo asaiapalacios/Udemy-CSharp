@@ -42,8 +42,13 @@ public class MovingBoxes : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		StartCoroutine (MoveBoxes()); // The proper convention, syntax for calling our coroutine
+		// The proper convention/syntax for calling our coroutine, an asynchronous-like property (it runs in parralel)
+		StartCoroutine (MoveBoxes()); // StartCoroutine function call initiates the MoveBoxes coroutine 
+				Debug.Log("Hello World"); // Note: Execution for "Hello World" does not pause to wait for the coroutine to finish 
+				// That is, code execution immediately moves to the next line (in this case, Debug.Log) before completion of the coroutine and... 
+				// the string statement is printed while the coroutine is still running.
 	}
+    
 	// Update is called once per frame
 	void Update () 
 	{
